@@ -37,6 +37,7 @@ footer {
 	width: 39.5em;
 	background-color: #fff;
 	z-index: 2;
+	display: none;
 }
 
 .game-square {
@@ -45,7 +46,8 @@ footer {
 	border: 1px solid #000;
 	display: inline-block;
 	border-radius: 50%;
-	z-index: 3
+	z-index: 3;
+	margin: 2px 4px;
 }
 
 .board-borders {
@@ -56,7 +58,7 @@ footer {
 #start-button {
 	position: absolute;
 	top: 10px;
-	left: 297px;
+	left: 291px;
 	padding: 10px;
 }
 
@@ -65,7 +67,7 @@ footer {
 	cursor: default;
 }
 
-#board-top {
+#board-0 {
 	height: .25em; 
 	width: 41.6em;
 	top: 82px;
@@ -73,7 +75,7 @@ footer {
 	z-index: 2;
 }
 
-#board-right {
+#board-1 {
 	height: 39.2em; 
 	width: .5em;
 	top: 86px;
@@ -81,7 +83,7 @@ footer {
 	z-index: 2;
 }
 
-#board-bottom {
+#board-2 {
 	height: .25em; 
 	width: 41.6em;
 	top: 627px;
@@ -89,7 +91,7 @@ footer {
 	z-index: 2;
 }
 
-#board-left {
+#board-3 {
 	height: 39.2em; 
 	width: .5em;
 	top: 86px;
