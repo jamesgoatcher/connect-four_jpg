@@ -1,0 +1,115 @@
+@font-face{
+	font-family: 'Courier_Prime', monospace;
+	src: url('../fonts/Courier_Prime.ttf');
+}
+
+body {
+	font-family: 'Courier_Prime', monospace;
+	text-align: center;
+}
+
+header {
+	margin: 2.5em 0 1em;
+}
+
+img {
+	width: 80px;
+	z-index: 1;
+}
+
+footer {
+	font-size: 12px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.container {
+	margin: 0 auto;
+	padding: 100px 0 100px 0;
+	width: 700px;
+	position: relative;
+}
+
+.game-board {
+	margin: 0 5%;
+	height: 32em;
+	width: 39.5em;
+	background-color: #fff;
+	z-index: 2;
+}
+
+.game-square {
+	height: 80px;
+	width: 80px;
+	border: 1px solid #000;
+	display: inline-block;
+	border-radius: 50%;
+	z-index: 3
+}
+
+.board-borders {
+	background-color: #222;
+	position: absolute;
+}
+
+#start-button {
+	position: absolute;
+	top: 10px;
+	left: 297px;
+	padding: 10px;
+}
+
+#start-button:hover {
+	border: 1px solid black;
+	cursor: default;
+}
+
+#board-top {
+	height: .25em; 
+	width: 41.6em;
+	top: 82px;
+	left: 17px;
+	z-index: 2;
+}
+
+#board-right {
+	height: 39.2em; 
+	width: .5em;
+	top: 86px;
+	left: 674px;
+	z-index: 2;
+}
+
+#board-bottom {
+	height: .25em; 
+	width: 41.6em;
+	top: 627px;
+	left: 17px;
+	z-index: 2;
+}
+
+#board-left {
+	height: 39.2em; 
+	width: .5em;
+	top: 86px;
+	left: 17px;
+	z-index: 2;
+}
+
+#board-top-white {
+	height: 14px; 
+	width: 40.6em;
+	top: 86px;
+	left: 25px;
+	z-index: 2;
+	background-color: #fff;
+}
+
+#demo {
+	animation: drop 3s ease;
+}
+
+@keyframes drop {
+	0% { transform: translateY(-430px);}
+}
