@@ -24,15 +24,19 @@ footer {
 	align-items: center;
 }
 
+span {
+	color: rgba(0,0,0,.5);
+}
+
 .container {
 	margin: 0 auto;
-	padding: 100px 0 100px 0;
+	padding: 50px 0 50px 0;
 	width: 700px;
 	position: relative;
 }
 
 .game-board {
-	margin: 0 5%;
+	margin: 6% 4.9% 5%;
 	height: 32em;
 	width: 39.5em;
 	background-color: #fff;
@@ -76,7 +80,7 @@ footer {
 }
 
 #board-1 {
-	height: 39.2em; 
+	height: 37.9em; 
 	width: .5em;
 	top: 86px;
 	left: 674px;
@@ -92,7 +96,7 @@ footer {
 }
 
 #board-3 {
-	height: 39.2em; 
+	height: 37.9em; 
 	width: .5em;
 	top: 86px;
 	left: 17px;
@@ -110,6 +114,80 @@ footer {
 
 #demo {
 	animation: drop 3s ease;
+}
+
+.player-one {
+	display: none;
+	position: absolute;
+}
+
+#player-one-input {
+	top: 18px;
+	left: 209;
+	height: 30px;
+	width: 170px;
+	border: none;
+	border-right: 1px solid #000;
+	text-align: right;
+}
+
+#player-one-button {
+	top: 24px;
+	left: 438px;
+	background-color: #fff;
+	border: none;
+	border-left: 1px solid #000;
+	color: rgba(0,0,0,.6);
+	transition: color 1s;
+}
+
+#player-one-button:hover {
+	color: #000;
+}
+
+#p-one-name{
+	display: none;
+	position: absolute;
+	top: 642px;
+	left: 30px;
+	font-size: 12px;
+}
+
+.player-two {
+	display: none;
+	position: absolute;
+}
+
+#player-two-input {
+	top: 18px;
+	left: 209;
+	height: 30px;
+	width: 170px;
+	border: none;
+	border-right: 1px solid #000;
+	text-align: right;
+}
+
+#player-two-button {
+	top: 24px;
+	left: 438px;
+	background-color: #fff;
+	border: none;
+	border-left: 1px solid #000;
+	color: rgba(0,0,0,.6);
+	transition: color 1s;
+}
+
+#player-two-button:hover {
+	color: #000;
+}
+
+#p-two-name{
+	display: none;
+	position: absolute;
+	top: 642px;
+	left: 350px;
+	font-size: 12px;
 }
 
 @keyframes drop {
