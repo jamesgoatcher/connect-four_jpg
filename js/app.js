@@ -47,11 +47,49 @@ $(document).ready(function() {
 		$('#p-two-name').html('<span>player two:</span> ' + $playerTwoName);
 		$('.player-two').fadeToggle(1500);//Player 2 Name is hidden
 		$('#p-two-name').fadeToggle(1500);//Player 2 Name tracker is active
+		connectFour.addClickCoin();
+		connectFour.playerOneBold();
+		connectFour.playerTwoBold();
 	});
 
 
+//GAME START
+	var connectFour = {
+
+	turn: 0,
+
+	addClickCoin: function() {
+
+		for (var i = 0; i < squareDiv.length; i++) {
+			var $findCoinDiv = $('#' + squareDiv[i]);
+			$($findCoinDiv).one('click', function(event) {
+				$('<img>').appendTo(event.target).attr('src', 'img/bitcoin-img.png').attr('id', 'coin-drop')
+				$('#p-one-name').toggleClass('player-bold'); //disables active, enables inactive
+				$('#p-two-name').toggleClass('player-bold');
+				$('#bit-flash').toggleClass('hide'); //disables flashing coin notifier
+				$('#doge-flash').toggleClass('show');
+				//connectFour.newGame(event.target);
+			})
+		}
+	},
+
+//P1 Name bold for initial move
+	playerOneBold: function() {
+		var $bitImgTurn = $('<img>')
+		$($bitImgTurn).prependTo('.container').attr('src', 'img/bitcoin-img.png').attr('id', 'bit-flash')
+		$('#p-one-name').toggleClass('player-bold');
+	},
+
+//P2 Name bold for initial move
+	playerTwoBold: function() {
+		var $dogeImgTurn = $('<img>')
+		$($dogeImgTurn).prependTo('.container').attr('src', 'img/dogecoin-img.png').attr('id', 'doge-flash')
+	},
+
+//Attach to next function: flash screen, animation drop, assign turn, notify of turn
 
 
 
 
+	}
 })

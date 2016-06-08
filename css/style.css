@@ -1,6 +1,11 @@
 @font-face{
-	font-family: 'Courier_Prime', monospace;
-	src: url('../fonts/Courier_Prime.ttf');
+	font-family: 'Courier_Prime';
+	src: url('../fonts/Courier_Prime.ttf') format('truetype');
+}
+
+@font-face{
+	font-family: 'Courier_Prime_Bold_Italic';
+	src: url('../fonts/Courier_Prime_Bold_Italic.ttf') format('truetype');
 }
 
 body {
@@ -112,7 +117,7 @@ span {
 	background-color: #fff;
 }
 
-#demo {
+#coin-drop {
 	animation: drop 3s ease;
 }
 
@@ -182,7 +187,7 @@ span {
 	color: #000;
 }
 
-#p-two-name{
+#p-two-name {
 	display: none;
 	position: absolute;
 	top: 642px;
@@ -190,6 +195,57 @@ span {
 	font-size: 12px;
 }
 
+.player-bold {
+	font-family: 'Courier_Prime_Bold_Italic', monospace;
+}
+
+.hide {
+	display: none;
+}
+
+.show {
+	display: block !important;
+}
+
+#bit-flash {
+	position: absolute;
+	top: 10px;
+	left: 330px;
+	width: 40px;
+	height: 40px;
+	opacity: 0;
+	animation: flash;
+	animation-duration: .5s;
+	animation-delay: 1.5s;
+	animation-iteration-count: infinite;
+}
+
+#doge-flash {
+	display: none;
+	position: absolute;
+	top: 10px;
+	left: 330px;
+	width: 40px;
+	height: 40px;
+	opacity: 0;
+	animation: flash;
+	animation-duration: .5s;
+	animation-delay: 1.5s;
+	animation-iteration-count: infinite;
+}
+
 @keyframes drop {
 	0% { transform: translateY(-430px);}
+}
+
+@keyframes flash {
+	0% 	  {opacity: 0;}
+	12%	  {opacity: .12;}
+	25%   {opacity: .25;}
+	38%	  {opacity: .38;}
+	50%   {opacity: .5;}
+	62%   {opacity: .38;}
+	75%   {opacity: .25;}
+	88%	  {opacity: .12;}
+	100%  {opacity: 0}
 }
