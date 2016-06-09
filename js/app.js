@@ -3,13 +3,15 @@ console.log('konnektd')
 $(document).ready(function() {
 
 //Arrays and World Variables
-	var squareDiv = [
-	'g6','f6','e6','d6','c6','b6','a6','g5','f5',
-	'e5','d5','c5','b5','a5','g4','f4','e4','d4','c4','b4',
-	'a4','g3','f3','e3','d3','c3','b3','a3','g2','f2',
-	'e2','d2','c2','b2','a2','g1','f1','e1','d1','c1',
-	'b1','a1'
+	var squareDivArray = [
+	['g',1],['f',1],['e',1],['d',1],['c',1],['b',1],['a',1],
+	['g',2],['f',2],['e',2],['d',2],['c',2],['b',2],['a',2],
+	['g',3],['f',3],['e',3],['d',3],['c',3],['b',3],['a',3],
+	['g',4],['f',4],['e',4],['d',4],['c',4],['b',4],['a',4],
+	['g',5],['f',5],['e',5],['d',5],['c',5],['b',5],['a',5],
+	['g',6],['f',6],['e',6],['d',6],['c',6],['b',6],['a',6],
 	];
+
 	var boardDiv = ['board-0','board-1','board-2','board-3'];
 
 //Start Button toggles Game Board and prompts P1 Name Submit
@@ -17,6 +19,7 @@ $(document).ready(function() {
 		$('#start-button').fadeToggle(250);//Start is hidden
 		$('.game-board').fadeToggle(1500);//Game Board is active
 		$('.player-one').fadeToggle(1500);//Player 1 Name is active
+		$('.drop-button').fadeToggle(1500);//Toggles drop buttons on
 	});
 
 //Loop to generate Square Divs and Board Divs
@@ -25,9 +28,9 @@ $(document).ready(function() {
 		$($createDiv).prependTo('.game-board').addClass('board-borders').attr('id', boardDiv[i])
 	})
 
-	$.each(squareDiv, function(i) {
+	$.each(squareDivArray, function(i) {
 		var $createDiv = $('<div>')
-		$($createDiv).prependTo('.game-board').addClass('game-square').attr('id', squareDiv[i])
+		$($createDiv).prependTo('.game-board').addClass('game-square').attr('id', squareDivArray[i][0]+squareDivArray[i][1]).attr('data-x', squareDivArray[i][0]).attr('data-y', squareDivArray[i][1])
 	})
 
 //Player One Name
@@ -57,21 +60,319 @@ $(document).ready(function() {
 	var connectFour = {
 
 	turn: 0,
+	turnPlayer: function(turn) {
+		return (turn & 1) ? 'player2' : 'player1';
+	},
 
+	//Sets up click events on Drop Buttons
 	addClickCoin: function() {
 
-		for (var i = 0; i < squareDiv.length; i++) {
-			var $findCoinDiv = $('#' + squareDiv[i]);
-			$($findCoinDiv).one('click', function(event) {
-				$('<img>').appendTo(event.target).attr('src', 'img/bitcoin-img.png').attr('id', 'coin-drop')
-				$('#p-one-name').toggleClass('player-bold'); //disables active, enables inactive
-				$('#p-two-name').toggleClass('player-bold');
-				$('#bit-flash').toggleClass('hide'); //disables flashing coin notifier
-				$('#doge-flash').toggleClass('show');
-				//connectFour.newGame(event.target);
-			})
-		}
+		$('#row-a').on('click', function() {
+			connectFour.rowA();
+			console.log(connectFour.turnPlayer(connectFour.turn))
+		})
+		$('#row-b').on('click', function() {
+			connectFour.rowB();
+			console.log(connectFour.turnPlayer(connectFour.turn))
+		})
+		$('#row-c').on('click', function() {
+			connectFour.rowC();
+			console.log(connectFour.turnPlayer(connectFour.turn))
+		})
+		$('#row-d').on('click', function() {
+			connectFour.rowD();
+			console.log(connectFour.turnPlayer(connectFour.turn))
+		})
+		$('#row-e').on('click', function() {
+			connectFour.rowE();
+			console.log(connectFour.turnPlayer(connectFour.turn))
+		})
+		$('#row-f').on('click', function() {
+			connectFour.rowF();
+			console.log(connectFour.turnPlayer(connectFour.turn))
+		})
+		$('#row-g').on('click', function() {
+			connectFour.rowG();
+			console.log(connectFour.turnPlayer(connectFour.turn))
+		})
 	},
+
+	rowA: function() {
+
+		var turnCoin = function(turn) {
+			turn = connectFour.turn;
+			return (turn & 1) ? 'img/dogecoin-img.png' : 'img/bitcoin-img.png';
+		}
+		
+		if ($('#a6').children().length > 0) {
+			return false;
+		} 
+		else if ($('#a5').children().length > 0) {
+			$('<img>').appendTo('#a6').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#a4').children().length > 0) {
+			$('<img>').appendTo('#a5').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#a3').children().length > 0) {
+			$('<img>').appendTo('#a4').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#a2').children().length > 0) {
+			$('<img>').appendTo('#a3').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#a1').children().length > 0) {
+			$('<img>').appendTo('#a2').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#a1').children().length <= 0) {
+			$('<img>').appendTo('#a1').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		
+		// $('#a2').children().length > 0 ? $('<img>').appendTo('#a3').attr('src', 'img/bitcoin-img.png').attr('id', 'coin-drop') : false
+		// $('#a3').children().length > 0 ? $('<img>').appendTo('#a4').attr('src', 'img/bitcoin-img.png').attr('id', 'coin-drop') : false
+		// $('#a4').children().length > 0 ? $('<img>').appendTo('#a5').attr('src', 'img/bitcoin-img.png').attr('id', 'coin-drop') : false
+		// $('#a5').children().length > 0 ? $('<img>').appendTo('#a6').attr('src', 'img/bitcoin-img.png').attr('id', 'coin-drop') : false
+		// $('#a6').children().length > 0 ? false : true;
+		// $('#a1').children().length > 0 ? $('<img>').appendTo('#a2').attr('src', 'img/bitcoin-img.png').attr('id', 'coin-drop') : false
+		// $('#a1').children().length <= 0 ? $('<img>').appendTo('#a1').attr('src', 'img/bitcoin-img.png').attr('id', 'coin-drop') : false
+
+		$('#p-one-name').toggleClass('player-bold'); //disables active, enables inactive
+		$('#p-two-name').toggleClass('player-bold');
+		$('#bit-flash').toggleClass('hide'); //disables flashing coin notifier
+		$('#doge-flash').toggleClass('show');
+
+		connectFour.turn ++;
+	},
+
+	rowB: function() {
+		var turnCoin = function(turn) {
+			turn = connectFour.turn;
+			return (turn & 1) ? 'img/dogecoin-img.png' : 'img/bitcoin-img.png';
+		}
+
+		if ($('#b6').children().length > 0) {
+			return false;
+		} 
+		else if ($('#b5').children().length > 0) {
+			$('<img>').appendTo('#b6').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#b4').children().length > 0) {
+			$('<img>').appendTo('#b5').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#b3').children().length > 0) {
+			$('<img>').appendTo('#b4').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#b2').children().length > 0) {
+			$('<img>').appendTo('#b3').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#b1').children().length > 0) {
+			$('<img>').appendTo('#b2').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#b1').children().length <= 0) {
+			$('<img>').appendTo('#b1').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+
+		$('#p-one-name').toggleClass('player-bold'); //disables active, enables inactive
+		$('#p-two-name').toggleClass('player-bold');
+		$('#bit-flash').toggleClass('hide'); //disables flashing coin notifier
+		$('#doge-flash').toggleClass('show');
+
+		connectFour.turn ++;
+	},
+
+	rowC: function() {
+		var turnCoin = function(turn) {
+			turn = connectFour.turn;
+			return (turn & 1) ? 'img/dogecoin-img.png' : 'img/bitcoin-img.png';
+		}
+
+		if ($('#c6').children().length > 0) {
+			return false;
+		} 
+		else if ($('#c5').children().length > 0) {
+			$('<img>').appendTo('#c6').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#c4').children().length > 0) {
+			$('<img>').appendTo('#c5').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#c3').children().length > 0) {
+			$('<img>').appendTo('#c4').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#c2').children().length > 0) {
+			$('<img>').appendTo('#c3').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#c1').children().length > 0) {
+			$('<img>').appendTo('#c2').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#c1').children().length <= 0) {
+			$('<img>').appendTo('#c1').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+
+		$('#p-one-name').toggleClass('player-bold'); //disables active, enables inactive
+		$('#p-two-name').toggleClass('player-bold');
+		$('#bit-flash').toggleClass('hide'); //disables flashing coin notifier
+		$('#doge-flash').toggleClass('show');
+
+		connectFour.turn ++;
+	},
+
+		rowD: function() {
+		var turnCoin = function(turn) {
+			turn = connectFour.turn;
+			return (turn & 1) ? 'img/dogecoin-img.png' : 'img/bitcoin-img.png';
+		}
+
+		if ($('#d6').children().length > 0) {
+			return false;
+		} 
+		else if ($('#d5').children().length > 0) {
+			$('<img>').appendTo('#d6').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#d4').children().length > 0) {
+			$('<img>').appendTo('#d5').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#d3').children().length > 0) {
+			$('<img>').appendTo('#d4').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#d2').children().length > 0) {
+			$('<img>').appendTo('#d3').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#d1').children().length > 0) {
+			$('<img>').appendTo('#d2').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#d1').children().length <= 0) {
+			$('<img>').appendTo('#d1').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+
+		$('#p-one-name').toggleClass('player-bold'); //disables active, enables inactive
+		$('#p-two-name').toggleClass('player-bold');
+		$('#bit-flash').toggleClass('hide'); //disables flashing coin notifier
+		$('#doge-flash').toggleClass('show');
+
+		connectFour.turn ++;
+	},
+
+		rowE: function() {
+		var turnCoin = function(turn) {
+			turn = connectFour.turn;
+			return (turn & 1) ? 'img/dogecoin-img.png' : 'img/bitcoin-img.png';
+		}
+
+		if ($('#e6').children().length > 0) {
+			return false;
+		} 
+		else if ($('#e5').children().length > 0) {
+			$('<img>').appendTo('#e6').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#e4').children().length > 0) {
+			$('<img>').appendTo('#e5').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#e3').children().length > 0) {
+			$('<img>').appendTo('#e4').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#e2').children().length > 0) {
+			$('<img>').appendTo('#e3').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#e1').children().length > 0) {
+			$('<img>').appendTo('#e2').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#e1').children().length <= 0) {
+			$('<img>').appendTo('#e1').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+
+		$('#p-one-name').toggleClass('player-bold'); //disables active, enables inactive
+		$('#p-two-name').toggleClass('player-bold');
+		$('#bit-flash').toggleClass('hide'); //disables flashing coin notifier
+		$('#doge-flash').toggleClass('show');
+
+		connectFour.turn ++;
+	},
+
+		rowF: function() {
+		var turnCoin = function(turn) {
+			turn = connectFour.turn;
+			return (turn & 1) ? 'img/dogecoin-img.png' : 'img/bitcoin-img.png';
+		}
+
+		if ($('#f6').children().length > 0) {
+			return false;
+		} 
+		else if ($('#f5').children().length > 0) {
+			$('<img>').appendTo('#f6').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#f4').children().length > 0) {
+			$('<img>').appendTo('#f5').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#f3').children().length > 0) {
+			$('<img>').appendTo('#f4').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#f2').children().length > 0) {
+			$('<img>').appendTo('#f3').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#f1').children().length > 0) {
+			$('<img>').appendTo('#f2').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#f1').children().length <= 0) {
+			$('<img>').appendTo('#f1').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+
+		$('#p-one-name').toggleClass('player-bold'); //disables active, enables inactive
+		$('#p-two-name').toggleClass('player-bold');
+		$('#bit-flash').toggleClass('hide'); //disables flashing coin notifier
+		$('#doge-flash').toggleClass('show');
+
+		connectFour.turn ++;
+	},
+
+		rowG: function() {
+		var turnCoin = function(turn) {
+			turn = connectFour.turn;
+			return (turn & 1) ? 'img/dogecoin-img.png' : 'img/bitcoin-img.png';
+		}
+
+		if ($('#g6').children().length > 0) {
+			return false;
+		} 
+		else if ($('#g5').children().length > 0) {
+			$('<img>').appendTo('#g6').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#g4').children().length > 0) {
+			$('<img>').appendTo('#g5').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#g3').children().length > 0) {
+			$('<img>').appendTo('#g4').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#g2').children().length > 0) {
+			$('<img>').appendTo('#g3').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#g1').children().length > 0) {
+			$('<img>').appendTo('#g2').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+		else if ($('#g1').children().length <= 0) {
+			$('<img>').appendTo('#g1').attr('src', turnCoin).attr('id', 'coin-drop')
+		} 
+
+		$('#p-one-name').toggleClass('player-bold'); //disables active, enables inactive
+		$('#p-two-name').toggleClass('player-bold');
+		$('#bit-flash').toggleClass('hide'); //disables flashing coin notifier
+		$('#doge-flash').toggleClass('show');
+
+		connectFour.turn ++;
+	},
+
+	// newGame: function(clickedHere) { 
+	// 	if ($(clickedHere).attr('data-x') === 'g') {
+	// 		console.log('has g for data x');
+	// 		if ($(clickedHere).has('img')) {
+	// 			console.log('has img');
+	// 			var aboveCircleY = $(clickedHere)[0].attributes[3].value;
+	// 			var aboveCircleX = $(clickedHere)[0].attributes[2].value;
+	// 			aboveCircleY++;
+	// 			$('<img>').appendTo('#' + aboveCircleX + aboveCircleY).attr('src', 'img/bitcoin-img.png').attr('id', 'coin-drop')
+	// 		} else {
+	// 			console.log('no img');
+	// 			$('<img>').appendTo('#g1').attr('src', 'img/bitcoin-img.png').attr('id', 'coin-drop')
+	// 		}
+	// 	}
+	// },
 
 //P1 Name bold for initial move
 	playerOneBold: function() {

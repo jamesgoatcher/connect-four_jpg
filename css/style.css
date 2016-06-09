@@ -153,7 +153,7 @@ span {
 #p-one-name{
 	display: none;
 	position: absolute;
-	top: 642px;
+	top: 50px;
 	left: 30px;
 	font-size: 12px;
 }
@@ -190,7 +190,7 @@ span {
 #p-two-name {
 	display: none;
 	position: absolute;
-	top: 642px;
+	top: 50px;
 	left: 350px;
 	font-size: 12px;
 }
@@ -210,13 +210,13 @@ span {
 #bit-flash {
 	position: absolute;
 	top: 10px;
-	left: 330px;
+	left: 49px;
 	width: 40px;
 	height: 40px;
 	opacity: 0;
 	animation: flash;
 	animation-duration: .5s;
-	animation-delay: 1.5s;
+	animation-delay: .5s;
 	animation-iteration-count: infinite;
 }
 
@@ -224,14 +224,54 @@ span {
 	display: none;
 	position: absolute;
 	top: 10px;
-	left: 330px;
+	left: 367px;
 	width: 40px;
 	height: 40px;
 	opacity: 0;
 	animation: flash;
 	animation-duration: .5s;
-	animation-delay: 1.5s;
+	animation-delay: .5s;
 	animation-iteration-count: infinite;
+}
+
+.drop-button {
+	display: none;
+	position: absolute;
+}
+
+#row-a {
+	top: 640px;
+	left: 59px;
+}
+
+#row-b {
+	top: 640px;
+	left: 149px;
+}
+
+#row-c {
+	top: 640px;
+	left: 240px;
+}
+
+#row-d {
+	top: 640px;
+	left: 330px;
+}
+
+#row-e {
+	top: 640px;
+	left: 420px;
+}
+
+#row-f {
+	top: 640px;
+	left: 510px;
+}
+
+#row-g {
+	top: 640px;
+	left: 600px;
 }
 
 @keyframes drop {
