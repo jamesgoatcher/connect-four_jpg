@@ -30,7 +30,7 @@ footer {
 }
 
 span {
-	color: rgba(0,0,0,.5);
+	color: #ccc;
 }
 
 .container {
@@ -118,7 +118,7 @@ span {
 }
 
 #coin-drop {
-	animation: drop 3s ease;
+	animation: drop 1.5s ease;
 }
 
 .player-one {
@@ -197,6 +197,8 @@ span {
 
 .player-bold {
 	font-family: 'Courier_Prime_Bold_Italic', monospace;
+	background: #222;
+	color: #fff;
 }
 
 .hide {
@@ -216,7 +218,7 @@ span {
 	opacity: 0;
 	animation: flash;
 	animation-duration: .5s;
-	animation-delay: .5s;
+	animation-delay: .25s;
 	animation-iteration-count: infinite;
 }
 
@@ -230,7 +232,7 @@ span {
 	opacity: 0;
 	animation: flash;
 	animation-duration: .5s;
-	animation-delay: .5s;
+	animation-delay: .25s;
 	animation-iteration-count: infinite;
 }
 
@@ -275,7 +277,7 @@ span {
 }
 
 @keyframes drop {
-	0% { transform: translateY(-430px);}
+	0% { transform: translateY(-450px);}
 }
 
 @keyframes flash {
