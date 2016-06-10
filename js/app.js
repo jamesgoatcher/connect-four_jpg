@@ -78,7 +78,7 @@ $(document).ready(function() {
 
 		$('#row-a').on('click', function(turn) {
 			connectFour.rowA(turn);
-			connectFour.checkPlayerOne();
+			connectFour.checkPlayerOneLoop();
 			connectFour.checkPlayerTwo();
 			console.log('1x: '+pOneArray);
 			console.log('1y: '+pOneArrayY);
@@ -87,7 +87,7 @@ $(document).ready(function() {
 		})
 		$('#row-b').on('click', function(turn) {
 			connectFour.rowB(turn);
-			connectFour.checkPlayerOne();
+			connectFour.checkPlayerOneLoop();
 			connectFour.checkPlayerTwo();
 			console.log('1x: '+pOneArray);
 			console.log('1y: '+pOneArrayY);
@@ -96,7 +96,7 @@ $(document).ready(function() {
 		})
 		$('#row-c').on('click', function(turn) {
 			connectFour.rowC(turn);
-			connectFour.checkPlayerOne();
+			connectFour.checkPlayerOneLoop();
 			connectFour.checkPlayerTwo();
 			console.log('1x: '+pOneArray);
 			console.log('1y: '+pOneArrayY);
@@ -105,7 +105,7 @@ $(document).ready(function() {
 		})
 		$('#row-d').on('click', function(turn) {
 			connectFour.rowD(turn);
-			connectFour.checkPlayerOne();
+			connectFour.checkPlayerOneLoop();
 			connectFour.checkPlayerTwo();
 			console.log('1x: '+pOneArray);
 			console.log('1y: '+pOneArrayY);
@@ -114,7 +114,7 @@ $(document).ready(function() {
 		})
 		$('#row-e').on('click', function(turn) {
 			connectFour.rowE(turn);
-			connectFour.checkPlayerOne();
+			connectFour.checkPlayerOneLoop();
 			connectFour.checkPlayerTwo();
 			console.log('1x: '+pOneArray);
 			console.log('1y: '+pOneArrayY);
@@ -123,7 +123,7 @@ $(document).ready(function() {
 		})
 		$('#row-f').on('click', function(turn) {
 			connectFour.rowF(turn);
-			connectFour.checkPlayerOne();
+			connectFour.checkPlayerOneLoop();
 			connectFour.checkPlayerTwo();
 			console.log('1x: '+pOneArray);
 			console.log('1y: '+pOneArrayY);
@@ -132,7 +132,7 @@ $(document).ready(function() {
 		})
 		$('#row-g').on('click', function(turn) {
 			connectFour.rowG(turn);
-			connectFour.checkPlayerOne();
+			connectFour.checkPlayerOneLoop();
 			connectFour.checkPlayerTwo();
 			console.log('1x: '+pOneArray);
 			console.log('1y: '+pOneArrayY);
@@ -510,6 +510,16 @@ $(document).ready(function() {
 
 			else if (Math.max(sortedTwo) - Math.min(sortedTwo) === 33) {
 				console.log('p2 winner NE-SW');
+			}
+		}
+	},
+
+	checkPlayerOneLoop: function() {
+		if (pOneArray.length && pOneArrayY.length >= 4) {
+			for (var i = 0; i < pOneArray.length; i++) {
+				if (pOneArrayY[i] - pOneArray[i] === 0 && pOneArrayY[i+1] - pOneArray[i+1] === 1 && pOneArrayY[i+2] - pOneArray[i+2] === 2 & pOneArrayY[i+3] - pOneArray[i+3] === 3) {
+					console.log('p1 win West-East');
+				}
 			}
 		}
 	},
