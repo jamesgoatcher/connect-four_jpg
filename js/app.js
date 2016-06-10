@@ -4,12 +4,12 @@ $(document).ready(function() {
 
 //Arrays and World Variables
 	var squareDivArray = [
-	['g',1],['f',1],['e',1],['d',1],['c',1],['b',1],['a',1],
-	['g',2],['f',2],['e',2],['d',2],['c',2],['b',2],['a',2],
-	['g',3],['f',3],['e',3],['d',3],['c',3],['b',3],['a',3],
-	['g',4],['f',4],['e',4],['d',4],['c',4],['b',4],['a',4],
-	['g',5],['f',5],['e',5],['d',5],['c',5],['b',5],['a',5],
-	['g',6],['f',6],['e',6],['d',6],['c',6],['b',6],['a',6],
+	['7',1],['6',1],['5',1],['4',1],['3',1],['2',1],['1',1],
+	['7',2],['6',2],['5',2],['4',2],['3',2],['2',2],['1',2],
+	['7',3],['6',3],['5',3],['4',3],['3',3],['2',3],['1',3],
+	['7',4],['6',4],['5',4],['4',4],['3',4],['2',4],['1',4],
+	['7',5],['6',5],['5',5],['4',5],['3',5],['2',5],['1',5],
+	['7',6],['6',6],['5',6],['4',6],['3',6],['2',6],['1',6],
 	];
 
 	var boardDiv = ['board-0','board-1','board-2','board-3'];
@@ -72,40 +72,40 @@ $(document).ready(function() {
 	//Sets up click events on Drop Buttons
 	addClickCoin: function() {
 
-		$('#row-a').on('click', function() {
-			connectFour.rowA();
-			console.log('p1' + pOneArray)
-			console.log('p2' + pTwoArray)
+		$('#row-a').on('click', function(turn) {
+			connectFour.rowA(turn);
+			console.log('p1: ' + pOneArray)
+			console.log('p2: ' + pTwoArray)
 		})
-		$('#row-b').on('click', function() {
-			connectFour.rowB();
-			console.log('p1' + pOneArray)
-			console.log('p2' + pTwoArray)
+		$('#row-b').on('click', function(turn) {
+			connectFour.rowB(turn);
+			console.log('p1: ' + pOneArray)
+			console.log('p2: ' + pTwoArray)
 		})
-		$('#row-c').on('click', function() {
-			connectFour.rowC();
-			console.log('p1' + pOneArray)
-			console.log('p2' + pTwoArray)
+		$('#row-c').on('click', function(turn) {
+			connectFour.rowC(turn);
+			console.log('p1: ' + pOneArray)
+			console.log('p2: ' + pTwoArray)
 		})
-		$('#row-d').on('click', function() {
-			connectFour.rowD();
-			console.log('p1' + pOneArray)
-			console.log('p2' + pTwoArray)
+		$('#row-d').on('click', function(turn) {
+			connectFour.rowD(turn);
+			console.log('p1: ' + pOneArray)
+			console.log('p2: ' + pTwoArray)
 		})
-		$('#row-e').on('click', function() {
-			connectFour.rowE();
-			console.log('p1' + pOneArray)
-			console.log('p2' + pTwoArray)
+		$('#row-e').on('click', function(turn) {
+			connectFour.rowE(turn);
+			console.log('p1: ' + pOneArray)
+			console.log('p2: ' + pTwoArray)
 		})
-		$('#row-f').on('click', function() {
-			connectFour.rowF();
-			console.log('p1' + pOneArray)
-			console.log('p2' + pTwoArray)
+		$('#row-f').on('click', function(turn) {
+			connectFour.rowF(turn);
+			console.log('p1: ' + pOneArray)
+			console.log('p2: ' + pTwoArray)
 		})
-		$('#row-g').on('click', function() {
-			connectFour.rowG();
-			console.log('p1' + pOneArray)
-			console.log('p2' + pTwoArray)
+		$('#row-g').on('click', function(turn) {
+			connectFour.rowG(turn);
+			console.log('p1: ' + pOneArray)
+			console.log('p2: ' + pTwoArray)
 		})
 	},
 
@@ -113,7 +113,7 @@ $(document).ready(function() {
 
 		var turnCoin = function(turn) {
 			turn = connectFour.turn;
-			return (turn & 1) ? 'img/dogecoin-img.png' : 'img/bitcoin-img.png' ;
+			return (turn & 1) ? 'img/bitcoin-img.png' : 'img/dogecoin-img.png';
 		}
 
 		$('#p-one-name').toggleClass('player-bold'); //disables active, enables inactive
@@ -122,32 +122,32 @@ $(document).ready(function() {
 		$('#doge-flash').toggleClass('show');
 		connectFour.turn ++;
 		
-		if ($('#a6').children().length > 0) {
+		if ($('#16').children().length > 0) {
 			return false;
 		} 
-		else if ($('#a5').children().length > 0) {
-			$('<img>').appendTo('#a6').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#a6').attr('id')) : pOneArray.push($('#a6').attr('id'))
+		else if ($('#15').children().length > 0) {
+			$('<img>').appendTo('#16').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#16').attr('id')) : pOneArray.push($('#16').attr('id'))
 		} 
-		else if ($('#a4').children().length > 0) {
-			$('<img>').appendTo('#a5').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#a5').attr('id')) : pOneArray.push($('#a5').attr('id'))
+		else if ($('#14').children().length > 0) {
+			$('<img>').appendTo('#15').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#15').attr('id')) : pOneArray.push($('#15').attr('id'))
 		} 
-		else if ($('#a3').children().length > 0) {
-			$('<img>').appendTo('#a4').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#a4').attr('id')) : pOneArray.push($('#a4').attr('id'))
+		else if ($('#13').children().length > 0) {
+			$('<img>').appendTo('#14').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#14').attr('id')) : pOneArray.push($('#14').attr('id'))
 		} 
-		else if ($('#a2').children().length > 0) {
-			$('<img>').appendTo('#a3').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#a3').attr('id')) : pOneArray.push($('#a3').attr('id'))
+		else if ($('#12').children().length > 0) {
+			$('<img>').appendTo('#13').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#13').attr('id')) : pOneArray.push($('#13').attr('id'))
 		} 
-		else if ($('#a1').children().length > 0) {
-			$('<img>').appendTo('#a2').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#a2').attr('id')) : pOneArray.push($('#a2').attr('id'))
+		else if ($('#11').children().length > 0) {
+			$('<img>').appendTo('#12').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#12').attr('id')) : pOneArray.push($('#12').attr('id'))
 		} 
-		else if ($('#a1').children().length <= 0) {
-			$('<img>').appendTo('#a1').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#a1').attr('id')) : pOneArray.push($('#a1').attr('id'))
+		else if ($('#11').children().length <= 0) {
+			$('<img>').appendTo('#11').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#11').attr('id')) : pOneArray.push($('#11').attr('id'))
 		} 
 	},
 
@@ -163,32 +163,32 @@ $(document).ready(function() {
 		$('#doge-flash').toggleClass('show');
 		connectFour.turn ++;
 
-		if ($('#b6').children().length > 0) {
+		if ($('#26').children().length > 0) {
 			return false;
 		} 
-		else if ($('#b5').children().length > 0) {
-			$('<img>').appendTo('#b6').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#b6').attr('id')) : pOneArray.push($('#b6').attr('id'))
+		else if ($('#25').children().length > 0) {
+			$('<img>').appendTo('#26').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#26').attr('id')) : pOneArray.push($('#26').attr('id'))
 		} 
-		else if ($('#b4').children().length > 0) {
-			$('<img>').appendTo('#b5').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#b5').attr('id')) : pOneArray.push($('#b5').attr('id'))
+		else if ($('#24').children().length > 0) {
+			$('<img>').appendTo('#25').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#25').attr('id')) : pOneArray.push($('#25').attr('id'))
 		} 
-		else if ($('#b3').children().length > 0) {
-			$('<img>').appendTo('#b4').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#b4').attr('id')) : pOneArray.push($('#b4').attr('id'))
+		else if ($('#23').children().length > 0) {
+			$('<img>').appendTo('#24').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#24').attr('id')) : pOneArray.push($('#24').attr('id'))
 		} 
-		else if ($('#b2').children().length > 0) {
-			$('<img>').appendTo('#b3').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#b3').attr('id')) : pOneArray.push($('#b3').attr('id'))
+		else if ($('#22').children().length > 0) {
+			$('<img>').appendTo('#23').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#23').attr('id')) : pOneArray.push($('#23').attr('id'))
 		} 
-		else if ($('#b1').children().length > 0) {
-			$('<img>').appendTo('#b2').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#b2').attr('id')) : pOneArray.push($('#b2').attr('id'))
+		else if ($('#21').children().length > 0) {
+			$('<img>').appendTo('#22').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#22').attr('id')) : pOneArray.push($('#22').attr('id'))
 		} 
-		else if ($('#b1').children().length <= 0) {
-			$('<img>').appendTo('#b1').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#b1').attr('id')) : pOneArray.push($('#b1').attr('id'))
+		else if ($('#21').children().length <= 0) {
+			$('<img>').appendTo('#21').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#21').attr('id')) : pOneArray.push($('#21').attr('id'))
 		} 
 	},
 
@@ -204,32 +204,32 @@ $(document).ready(function() {
 		$('#doge-flash').toggleClass('show');
 		connectFour.turn ++;
 
-		if ($('#c6').children().length > 0) {
+		if ($('#36').children().length > 0) {
 			return false;
 		} 
-		else if ($('#c5').children().length > 0) {
-			$('<img>').appendTo('#c6').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#c6').attr('id')) : pOneArray.push($('#c6').attr('id'))
+		else if ($('#35').children().length > 0) {
+			$('<img>').appendTo('#36').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#36').attr('id')) : pOneArray.push($('#36').attr('id'))
 		} 
-		else if ($('#c4').children().length > 0) {
-			$('<img>').appendTo('#c5').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#c5').attr('id')) : pOneArray.push($('#c5').attr('id'))
+		else if ($('#34').children().length > 0) {
+			$('<img>').appendTo('#35').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#35').attr('id')) : pOneArray.push($('#35').attr('id'))
 		} 
-		else if ($('#c3').children().length > 0) {
-			$('<img>').appendTo('#c4').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#c4').attr('id')) : pOneArray.push($('#c4').attr('id'))
+		else if ($('#33').children().length > 0) {
+			$('<img>').appendTo('#34').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#34').attr('id')) : pOneArray.push($('#34').attr('id'))
 		} 
-		else if ($('#c2').children().length > 0) {
-			$('<img>').appendTo('#c3').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#c3').attr('id')) : pOneArray.push($('#c3').attr('id'))
+		else if ($('#32').children().length > 0) {
+			$('<img>').appendTo('#33').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#33').attr('id')) : pOneArray.push($('#33').attr('id'))
 		} 
-		else if ($('#c1').children().length > 0) {
-			$('<img>').appendTo('#c2').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#c2').attr('id')) : pOneArray.push($('#c2').attr('id'))
+		else if ($('#31').children().length > 0) {
+			$('<img>').appendTo('#32').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#32').attr('id')) : pOneArray.push($('#32').attr('id'))
 		} 
-		else if ($('#c1').children().length <= 0) {
-			$('<img>').appendTo('#c1').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#c1').attr('id')) : pOneArray.push($('#c1').attr('id'))
+		else if ($('#31').children().length <= 0) {
+			$('<img>').appendTo('#31').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#31').attr('id')) : pOneArray.push($('#31').attr('id'))
 		} 
 	},
 
@@ -248,29 +248,29 @@ $(document).ready(function() {
 		if ($('#d6').children().length > 0) {
 			return false;
 		} 
-		else if ($('#d5').children().length > 0) {
-			$('<img>').appendTo('#d6').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#d6').attr('id')) : pOneArray.push($('#d6').attr('id'))
+		else if ($('#45').children().length > 0) {
+			$('<img>').appendTo('#46').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#46').attr('id')) : pOneArray.push($('#46').attr('id'))
 		} 
-		else if ($('#d4').children().length > 0) {
-			$('<img>').appendTo('#d5').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#d5').attr('id')) : pOneArray.push($('#d5').attr('id'))
+		else if ($('#44').children().length > 0) {
+			$('<img>').appendTo('#45').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#45').attr('id')) : pOneArray.push($('#45').attr('id'))
 		} 
-		else if ($('#d3').children().length > 0) {
-			$('<img>').appendTo('#d4').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#d4').attr('id')) : pOneArray.push($('#d4').attr('id'))
+		else if ($('#43').children().length > 0) {
+			$('<img>').appendTo('#44').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#44').attr('id')) : pOneArray.push($('#44').attr('id'))
 		} 
-		else if ($('#d2').children().length > 0) {
-			$('<img>').appendTo('#d3').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#d3').attr('id')) : pOneArray.push($('#d3').attr('id'))
+		else if ($('#42').children().length > 0) {
+			$('<img>').appendTo('#43').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#43').attr('id')) : pOneArray.push($('#43').attr('id'))
 		} 
-		else if ($('#d1').children().length > 0) {
-			$('<img>').appendTo('#d2').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#d2').attr('id')) : pOneArray.push($('#d2').attr('id'))
+		else if ($('#41').children().length > 0) {
+			$('<img>').appendTo('#42').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#42').attr('id')) : pOneArray.push($('#42').attr('id'))
 		} 
-		else if ($('#d1').children().length <= 0) {
-			$('<img>').appendTo('#d1').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#d1').attr('id')) : pOneArray.push($('#d1').attr('id'))
+		else if ($('#41').children().length <= 0) {
+			$('<img>').appendTo('#41').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#41').attr('id')) : pOneArray.push($('#41').attr('id'))
 		} 
 	},
 
@@ -286,32 +286,32 @@ $(document).ready(function() {
 		$('#doge-flash').toggleClass('show');
 		connectFour.turn ++;
 
-		if ($('#e6').children().length > 0) {
+		if ($('#56').children().length > 0) {
 			return false;
 		} 
-		else if ($('#e5').children().length > 0) {
-			$('<img>').appendTo('#e6').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#e6').attr('id')) : pOneArray.push($('#e6').attr('id'))
+		else if ($('#55').children().length > 0) {
+			$('<img>').appendTo('#56').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#56').attr('id')) : pOneArray.push($('#56').attr('id'))
 		} 
-		else if ($('#e4').children().length > 0) {
-			$('<img>').appendTo('#e5').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#e5').attr('id')) : pOneArray.push($('#e5').attr('id'))
+		else if ($('#54').children().length > 0) {
+			$('<img>').appendTo('#55').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#55').attr('id')) : pOneArray.push($('#55').attr('id'))
 		} 
-		else if ($('#e3').children().length > 0) {
-			$('<img>').appendTo('#e4').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#e4').attr('id')) : pOneArray.push($('#e4').attr('id'))
+		else if ($('#53').children().length > 0) {
+			$('<img>').appendTo('#54').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#54').attr('id')) : pOneArray.push($('#54').attr('id'))
 		} 
-		else if ($('#e2').children().length > 0) {
-			$('<img>').appendTo('#e3').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#e3').attr('id')) : pOneArray.push($('#e3').attr('id'))
+		else if ($('#52').children().length > 0) {
+			$('<img>').appendTo('#53').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#53').attr('id')) : pOneArray.push($('#53').attr('id'))
 		} 
-		else if ($('#e1').children().length > 0) {
-			$('<img>').appendTo('#e2').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#e2').attr('id')) : pOneArray.push($('#e2').attr('id'))
+		else if ($('#51').children().length > 0) {
+			$('<img>').appendTo('#52').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#52').attr('id')) : pOneArray.push($('#52').attr('id'))
 		} 
-		else if ($('#e1').children().length <= 0) {
-			$('<img>').appendTo('#e1').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#e1').attr('id')) : pOneArray.push($('#e1').attr('id'))
+		else if ($('#51').children().length <= 0) {
+			$('<img>').appendTo('#51').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#51').attr('id')) : pOneArray.push($('#51').attr('id'))
 		} 
 	},
 
@@ -327,32 +327,32 @@ $(document).ready(function() {
 		$('#doge-flash').toggleClass('show');
 		connectFour.turn ++;
 
-		if ($('#f6').children().length > 0) {
+		if ($('#66').children().length > 0) {
 			return false;
 		} 
-		else if ($('#f5').children().length > 0) {
-			$('<img>').appendTo('#f6').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#f6').attr('id')) : pOneArray.push($('#f6').attr('id'))
+		else if ($('#65').children().length > 0) {
+			$('<img>').appendTo('#66').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#66').attr('id')) : pOneArray.push($('#66').attr('id'))
 		} 
-		else if ($('#f4').children().length > 0) {
-			$('<img>').appendTo('#f5').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#f5').attr('id')) : pOneArray.push($('#f5').attr('id'))
+		else if ($('#64').children().length > 0) {
+			$('<img>').appendTo('#65').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#65').attr('id')) : pOneArray.push($('#65').attr('id'))
 		} 
-		else if ($('#f3').children().length > 0) {
-			$('<img>').appendTo('#f4').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#f4').attr('id')) : pOneArray.push($('#f4').attr('id'))
+		else if ($('#63').children().length > 0) {
+			$('<img>').appendTo('#64').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#64').attr('id')) : pOneArray.push($('#64').attr('id'))
 		} 
-		else if ($('#f2').children().length > 0) {
-			$('<img>').appendTo('#f3').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#f3').attr('id')) : pOneArray.push($('#f3').attr('id'))
+		else if ($('#62').children().length > 0) {
+			$('<img>').appendTo('#63').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#63').attr('id')) : pOneArray.push($('#63').attr('id'))
 		} 
-		else if ($('#f1').children().length > 0) {
-			$('<img>').appendTo('#f2').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#f2').attr('id')) : pOneArray.push($('#f2').attr('id'))
+		else if ($('#61').children().length > 0) {
+			$('<img>').appendTo('#62').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#62').attr('id')) : pOneArray.push($('#62').attr('id'))
 		} 
-		else if ($('#f1').children().length <= 0) {
-			$('<img>').appendTo('#f1').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#f1').attr('id')) : pOneArray.push($('#f1').attr('id'))
+		else if ($('#61').children().length <= 0) {
+			$('<img>').appendTo('#61').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#61').attr('id')) : pOneArray.push($('#61').attr('id'))
 		} 
 	},
 
@@ -368,32 +368,32 @@ $(document).ready(function() {
 		$('#doge-flash').toggleClass('show');
 		connectFour.turn ++;
 
-		if ($('#g6').children().length > 0) {
+		if ($('#76').children().length > 0) {
 			return false;
 		} 
-		else if ($('#g5').children().length > 0) {
-			$('<img>').appendTo('#g6').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#g6').attr('id')) : pOneArray.push($('#g6').attr('id'))
+		else if ($('#75').children().length > 0) {
+			$('<img>').appendTo('#76').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#76').attr('id')) : pOneArray.push($('#76').attr('id'))
 		} 
-		else if ($('#g4').children().length > 0) {
-			$('<img>').appendTo('#g5').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#g5').attr('id')) : pOneArray.push($('#g5').attr('id'))
+		else if ($('#74').children().length > 0) {
+			$('<img>').appendTo('#75').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#75').attr('id')) : pOneArray.push($('#75').attr('id'))
 		} 
-		else if ($('#g3').children().length > 0) {
-			$('<img>').appendTo('#g4').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#g4').attr('id')) : pOneArray.push($('#g4').attr('id'))
+		else if ($('#73').children().length > 0) {
+			$('<img>').appendTo('#74').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#74').attr('id')) : pOneArray.push($('#74').attr('id'))
 		} 
-		else if ($('#g2').children().length > 0) {
-			$('<img>').appendTo('#g3').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#g3').attr('id')) : pOneArray.push($('#g3').attr('id'))
+		else if ($('#72').children().length > 0) {
+			$('<img>').appendTo('#73').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#73').attr('id')) : pOneArray.push($('#73').attr('id'))
 		} 
-		else if ($('#g1').children().length > 0) {
-			$('<img>').appendTo('#g2').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#g2').attr('id')) : pOneArray.push($('#g2').attr('id'))
+		else if ($('#71').children().length > 0) {
+			$('<img>').appendTo('#72').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#72').attr('id')) : pOneArray.push($('#72').attr('id'))
 		} 
-		else if ($('#g1').children().length <= 0) {
-			$('<img>').appendTo('#g1').attr('src', turnCoin).attr('id', 'coin-drop')
-			return (connectFour.turn & 1) ? pTwoArray.push($('#g1').attr('id')) : pOneArray.push($('#g1').attr('id'))
+		else if ($('#71').children().length <= 0) {
+			$('<img>').appendTo('#71').attr('src', turnCoin).attr('id', 'coin-drop')
+			return (connectFour.turn & 1) ? pTwoArray.push($('#71').attr('id')) : pOneArray.push($('#71').attr('id'))
 		} 
 	},
 
